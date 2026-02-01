@@ -797,7 +797,18 @@ export default function Home() {
           </div>
         </footer>
 
-       
+        {/* Floating Entry Bot Trigger */}
+        <div className="fixed bottom-6 right-6 z-[160] flex flex-col items-end gap-1">
+          <AnimatePresence>
+            {!isChatOpen && (
+              <motion.button
+                initial={{ scale: 0, opacity: 0, y: 20 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0, opacity: 0, y: 20 }}
+                onClick={() => setIsChatOpen(true)}
+                className="relative group flex flex-col items-center"
+              >
+                {/* "CHAT" Bubble matching dashboard */}
 
                 <div className="relative group">
                   {/* Bot Glow Effect */}
