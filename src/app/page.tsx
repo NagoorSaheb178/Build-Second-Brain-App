@@ -92,24 +92,22 @@ export default function Home() {
       }
     });
 
-    // Reveal on Scroll Animations
+    // Reveal on Scroll Animations - DAMPSENED
     const reveals = gsap.utils.toArray('.reveal-on-scroll');
     reveals.forEach((elem: any) => {
       gsap.fromTo(elem,
         {
-          y: 100,
+          y: 30, // Reduced from 100
           opacity: 0,
-          scale: 0.95
         },
         {
           y: 0,
           opacity: 1,
-          scale: 1,
-          duration: 1.2,
-          ease: "power3.out",
+          duration: 0.8, // Faster duration
+          ease: "power2.out",
           scrollTrigger: {
             trigger: elem,
-            start: "top 85%",
+            start: "top 90%",
             toggleActions: "play none none reverse"
           }
         }
@@ -154,7 +152,8 @@ export default function Home() {
       }
     });
 
-    // Section Blur/Opacity transitions
+    // Section Blur/Opacity transitions - REMOVED for less "heavy" feel
+    /*
     const sections = gsap.utils.toArray('section');
     sections.forEach((section: any, i) => {
       if (i === 0) return; // Skip hero
@@ -172,6 +171,7 @@ export default function Home() {
         }
       );
     });
+    */
   }, [mounted, isLoggedIn]);
 
   if (!mounted) return null;
@@ -808,6 +808,17 @@ export default function Home() {
                 onClick={() => setIsChatOpen(true)}
                 className="relative group flex flex-col items-center"
               >
+                {/* "CHAT" Bubble matching dashboard */}
+                <motion.div
+                  initial={{ y: 5, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                  className="mb-2 bg-[#1e144a] text-white px-5 py-2.5 rounded-full text-[12px] font-black uppercase tracking-widest shadow-2xl border border-white/10 flex items-center gap-2 group-hover:scale-105 transition-transform"
+                >
+                  <MessageCircle className="w-3 h-3 text-indigo-400" />
+                  Chat
+                </motion.div>
+
                 <div className="relative group">
                   {/* Bot Glow Effect */}
                   <div className="absolute inset-x-0 -bottom-4 h-12 bg-indigo-500 rounded-full blur-3xl opacity-30 group-hover:opacity-60 transition-opacity animate-pulse" />
@@ -815,7 +826,7 @@ export default function Home() {
                   <motion.div
                     animate={{ x: mousePos.x * 0.3, y: mousePos.y * 0.3 }}
                     transition={{ type: "spring", stiffness: 200, damping: 30 }}
-                    className="relative w-48 h-48 md:w-64 md:h-64 overflow-visible transition-transform group-hover:scale-105 active:scale-95 group-hover:-translate-y-2"
+                    className="relative w-32 h-32 md:w-64 md:h-64 overflow-visible transition-transform group-hover:scale-105 active:scale-95 group-hover:-translate-y-2"
                   >
                     <video
                       autoPlay
@@ -828,7 +839,7 @@ export default function Home() {
                     </video>
 
                     {/* Online Indicator */}
-                    <div className="absolute top-[45%] right-8 w-5 h-5 bg-emerald-500 rounded-full border-4 border-white shadow-xl animate-pulse" />
+                    <div className="absolute top-1/2 right-4 w-4 h-4 bg-emerald-500 rounded-full border-4 border-white shadow-xl animate-pulse" />
                   </motion.div>
                 </div>
               </motion.button>
