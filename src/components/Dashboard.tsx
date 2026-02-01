@@ -196,8 +196,8 @@ export default function Dashboard() {
     }
 
     const TopBar = ({ search, setSearch, setIsFormOpen, user, handleLogout, isProfileMenuOpen, setIsProfileMenuOpen }: TopBarProps) => (
-        <div className="sticky top-4 z-[100] px-8">
-            <header className="h-14 bg-[#1e144a] border border-white/10 rounded-full px-6 flex items-center justify-between shadow-2xl shadow-indigo-900/40 backdrop-blur-xl">
+        <div className="sticky top-4 z-[100] px-3 sm:px-8">
+            <header className="h-14 bg-[#1e144a] border border-white/10 rounded-full px-4 sm:px-6 flex items-center justify-between shadow-2xl shadow-indigo-900/40 backdrop-blur-xl">
                 <div className="flex items-center gap-6">
                     <div className="flex items-center gap-3">
                         <div className="w-4 h-4 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 shadow-lg shadow-purple-500/50" />
@@ -413,7 +413,7 @@ export default function Dashboard() {
             />
 
             <div className="flex-1 flex flex-col min-w-0">
-                <main className="flex-1 p-6 md:p-10">
+                <main className="flex-1 p-3 sm:p-6 md:p-10">
                     <div className="max-w-5xl mx-auto space-y-8">
                         {/* FILTERS & SORT */}
                         <section className="bg-white rounded-2xl p-3 sm:p-4 border border-slate-100 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -493,7 +493,7 @@ export default function Dashboard() {
                         </section>
 
                         {/* PUBLIC ACCESS */}
-                        <section className="pt-20 pb-20 border-t border-slate-100 bg-slate-50/50 -mx-6 md:-mx-10 px-6 md:px-10">
+                        <section className="pt-20 pb-20 border-t border-slate-100 bg-slate-50/50 -mx-3 sm:-mx-6 md:-mx-10 px-3 sm:px-6 md:px-10">
                             <div className="max-w-5xl mx-auto space-y-12">
                                 {/* Header */}
                                 <div className="text-center max-w-2xl mx-auto">
@@ -512,7 +512,7 @@ export default function Dashboard() {
                                 {/* Cards Grid */}
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                                     {/* Query Endpoint Card */}
-                                    <div className="bg-white rounded-[32px] p-8 border border-white/60 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_50px_-10px_rgba(79,70,229,0.15)] relative overflow-hidden group transition-all duration-500 ring-1 ring-slate-100">
+                                    <div className="bg-white rounded-[32px] p-5 sm:p-8 border border-white/60 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_50px_-10px_rgba(79,70,229,0.15)] relative overflow-hidden group transition-all duration-500 ring-1 ring-slate-100">
                                         <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-50/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none transition-opacity opacity-50 group-hover:opacity-100" />
 
                                         <div className="flex items-center justify-between mb-8 relative z-10">
@@ -521,19 +521,19 @@ export default function Dashboard() {
                                         </div>
 
                                         <div className="space-y-6 relative z-10">
-                                            <div className="bg-[#1e1e2e] rounded-2xl p-5 border border-slate-800 shadow-xl shadow-slate-900/10 overflow-x-auto group-hover:border-indigo-500/30 transition-colors">
-                                                <code className="text-[12px] font-mono text-indigo-300 whitespace-nowrap block">
+                                            <div className="bg-[#1e1e2e] rounded-2xl p-4 sm:p-5 border border-slate-800 shadow-xl shadow-slate-900/10 overflow-x-auto no-scrollbar group-hover:border-indigo-500/30 transition-colors">
+                                                <code className="text-[10px] sm:text-[12px] font-mono text-indigo-300 whitespace-nowrap block">
                                                     <span className="text-purple-400">GET</span> /api/public/brain/query?q=<span className="text-emerald-400">What are LLMs?</span>
                                                 </code>
                                             </div>
 
-                                            <div className="bg-white rounded-2xl p-5 border border-slate-100/80 text-[11px] font-mono text-slate-600 leading-relaxed shadow-[0_10px_30px_-10px_rgba(0,0,0,0.05)] ring-1 ring-slate-50">
-                                                <div className="flex gap-3 mb-3">
-                                                    <span className="text-purple-600 font-bold">"answer":</span>
+                                            <div className="bg-white rounded-2xl p-4 sm:p-5 border border-slate-100/80 text-[10px] sm:text-[11px] font-mono text-slate-600 leading-relaxed shadow-[0_10px_30px_-10px_rgba(0,0,0,0.05)] ring-1 ring-slate-50">
+                                                <div className="flex flex-col sm:flex-row gap-1 sm:gap-3 mb-3">
+                                                    <span className="text-purple-600 font-bold shrink-0">"answer":</span>
                                                     <span className="text-slate-700">"Large Language Models (LLMs) are AI systems trained on massive text datasets..."</span>
                                                 </div>
-                                                <div className="flex gap-3">
-                                                    <span className="text-purple-600 font-bold">"sources":</span>
+                                                <div className="flex flex-col sm:flex-row gap-1 sm:gap-3">
+                                                    <span className="text-purple-600 font-bold shrink-0">"sources":</span>
                                                     <span className="text-slate-400">[ &#123; "id": 12, "title": "Intro to Generative AI" &#125; ... ]</span>
                                                 </div>
                                             </div>
@@ -541,7 +541,7 @@ export default function Dashboard() {
                                     </div>
 
                                     {/* Embeddable Widget Card */}
-                                    <div className="bg-white rounded-[32px] p-8 border border-white/60 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_50px_-10px_rgba(147,51,234,0.15)] relative overflow-hidden group transition-all duration-500 ring-1 ring-slate-100">
+                                    <div className="bg-white rounded-[32px] p-5 sm:p-8 border border-white/60 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_50px_-10px_rgba(147,51,234,0.15)] relative overflow-hidden group transition-all duration-500 ring-1 ring-slate-100">
                                         <div className="absolute top-0 right-0 w-64 h-64 bg-purple-50/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none transition-opacity opacity-50 group-hover:opacity-100" />
 
                                         <div className="flex items-center justify-between mb-8 relative z-10">
@@ -550,7 +550,7 @@ export default function Dashboard() {
                                         </div>
 
                                         <div className="relative z-10 h-full">
-                                            <div className="bg-slate-50/50 rounded-2xl p-6 border border-slate-200/50 text-[12px] font-mono text-slate-500 leading-loose shadow-inner h-full flex flex-col justify-center group-hover:border-indigo-200/50 transition-colors">
+                                            <div className="bg-slate-50/50 rounded-2xl p-4 sm:p-6 border border-slate-200/50 text-[10px] sm:text-[12px] font-mono text-slate-500 leading-loose shadow-inner h-full flex flex-col justify-center group-hover:border-indigo-200/50 transition-colors overflow-x-auto no-scrollbar">
                                                 <div>
                                                     &lt;<span className="text-pink-500">iframe</span> <br />
                                                     &nbsp;&nbsp;<span className="text-purple-600">src</span>="https://yourapp.com/embed/brain" <br />
