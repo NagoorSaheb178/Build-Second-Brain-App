@@ -163,7 +163,7 @@ User Question: ${messageText}`;
                         <div className="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border-2 border-[#1e144a] rounded-full animate-pulse" />
                     </div>
                     <div>
-                        <h3 className="text-[13px] font-black text-white uppercase tracking-widest leading-none">
+                        <h3 className="text-[14px] font-black text-white uppercase tracking-widest leading-none">
                             {isDashboard ? 'Brain Assistant' : 'Welcome Assistant'}
                         </h3>
                         <p className="text-[10px] text-indigo-300/80 font-medium mt-1">
@@ -208,7 +208,7 @@ User Question: ${messageText}`;
                                 ? "bg-indigo-600 text-white rounded-2xl rounded-tr-none"
                                 : "bg-white text-slate-800 rounded-2xl rounded-tl-none border border-slate-100"
                         )}>
-                            <p className="text-[11px] leading-relaxed font-medium">
+                            <p className="text-[13px] sm:text-[14px] leading-relaxed font-medium">
                                 {m.content}
                             </p>
                             {m.isSummarizing && (
@@ -262,7 +262,7 @@ User Question: ${messageText}`;
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         placeholder="Type a message..."
-                        className="flex-1 bg-transparent border-none outline-none focus:ring-0 text-[13px] font-medium text-slate-700 placeholder:text-slate-400 min-w-0"
+                        className="flex-1 bg-transparent border-none outline-none focus:ring-0 text-[15px] sm:text-[13px] font-medium text-slate-700 placeholder:text-slate-400 min-w-0"
                     />
                     <button
                         type="submit"
