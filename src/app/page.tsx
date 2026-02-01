@@ -114,7 +114,7 @@ export default function Home() {
       );
     });
 
-    // Features Section Staggered reveal
+    /* Features Section Staggered reveal removed as requested
     gsap.from(".feature-card", {
       opacity: 0,
       y: 40,
@@ -126,6 +126,7 @@ export default function Home() {
         start: "top 75%",
       }
     });
+    */
 
     // Graph Section Scale effect
     gsap.from(".graph-container", {
@@ -430,12 +431,8 @@ export default function Home() {
               ].map((f, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  className="bg-white p-10 rounded-[40px] border border-slate-100 shadow-sm hover:border-amber-200 hover:shadow-2xl transition-all duration-500 group relative overflow-hidden feature-card"
+                  initial={{ opacity: 1, y: 0 }}
+                  className="bg-white p-10 rounded-[40px] border border-slate-100 shadow-sm transition-all duration-300 group relative overflow-hidden feature-card"
                 >
                   <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-150 group-hover:opacity-10 transition-all duration-700">
                     {React.cloneElement(f.icon as React.ReactElement<any>, { size: 100 })}
