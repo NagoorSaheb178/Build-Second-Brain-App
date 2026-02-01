@@ -214,7 +214,7 @@ export default function Dashboard() {
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                             placeholder="Search..."
-                            className="w-full bg-white/5 border border-white/10 rounded-full py-2 pl-9 sm:py-2 sm:pl-12 pr-4 focus:outline-none focus:ring-4 focus:ring-purple-500/10 focus:border-purple-500/30 transition-all placeholder:text-white/20 font-medium text-[9px] sm:text-xs text-white"
+                            className="w-full bg-white/5 border border-white/10 rounded-full py-2 pl-9 sm:py-2 sm:pl-12 pr-4 focus:outline-none focus:ring-4 focus:ring-purple-500/10 focus:border-purple-500/30 transition-all placeholder:text-white/20 font-medium text-[11px] sm:text-xs text-white"
                         />
                     </div>
                 </div>
@@ -224,11 +224,10 @@ export default function Dashboard() {
                         whileHover={{ scale: 1.05, y: -2 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => setIsFormOpen(true)}
-                        className="bg-white text-[#1e144a] px-3 sm:px-5 py-2.5 rounded-full font-black text-[9px] sm:text-[10px] uppercase tracking-widest flex items-center gap-2 hover:bg-indigo-50 transition-all shadow-xl shadow-indigo-500/20 group"
+                        className="bg-white text-[#1e144a] px-3 sm:px-5 py-2 rounded-full font-black text-[10px] sm:text-[11px] uppercase tracking-widest flex items-center gap-2 hover:bg-indigo-50 transition-all shadow-xl shadow-indigo-500/20 group whitespace-nowrap"
                     >
                         <Plus className="w-3.5 h-3.5 sm:w-4 h-4 transition-transform group-hover:rotate-90" />
-                        <span className="hidden xs:block">New Note</span>
-                        <span className="xs:hidden">New</span>
+                        <span>New</span>
                     </motion.button>
 
                     <div className="h-8 w-[1px] bg-white/10 mx-1 sm:mx-2" />
@@ -293,7 +292,7 @@ export default function Dashboard() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             whileHover={{ y: -5, scale: 1.01 }}
-            className="group relative bg-white rounded-3xl p-6 border border-slate-100 shadow-sm hover:shadow-xl hover:border-amber-200/50 transition-all cursor-pointer overflow-hidden"
+            className="group relative bg-white rounded-3xl p-5 sm:p-6 border border-slate-100 shadow-sm hover:shadow-xl hover:border-amber-200/50 transition-all cursor-pointer overflow-hidden"
             onClick={() => router.push(`/knowledge/${item._id}`)}
         >
             <div className="flex items-start justify-between gap-4 mb-4">
@@ -346,21 +345,23 @@ export default function Dashboard() {
                 </div>
             </div>
 
-            <p className="text-slate-500 font-medium text-[12px] leading-relaxed line-clamp-2 mb-5">
+            <p className="text-slate-500 font-medium text-[13px] leading-relaxed line-clamp-3 mb-5">
                 {item.content}
             </p>
 
-            {item.summary && (
-                <div className="mb-5 bg-amber-50/30 border border-amber-100/30 rounded-2xl p-4 transition-all group-hover:bg-amber-50/50">
-                    <div className="flex items-center gap-2 mb-2 text-amber-600 font-black text-[9px] uppercase tracking-widest">
-                        <Sparkles className="w-3.5 h-3.5" />
-                        AI Insights
+            {
+                item.summary && (
+                    <div className="mb-5 bg-amber-50/30 border border-amber-100/30 rounded-2xl p-4 transition-all group-hover:bg-amber-50/50">
+                        <div className="flex items-center gap-2 mb-2 text-amber-600 font-black text-[9px] uppercase tracking-widest">
+                            <Sparkles className="w-3.5 h-3.5" />
+                            AI Insights
+                        </div>
+                        <p className="text-[11px] text-amber-900 font-medium italic line-clamp-2 leading-relaxed">
+                            {item.summary}
+                        </p>
                     </div>
-                    <p className="text-[11px] text-amber-900 font-medium italic line-clamp-2 leading-relaxed">
-                        {item.summary}
-                    </p>
-                </div>
-            )}
+                )
+            }
 
             <div className="flex flex-wrap gap-2 pt-5 border-t border-slate-50">
                 {item.tags.filter(tag => tag.trim() !== "").slice(0, 3).map((tag, idx) => (
@@ -396,7 +397,7 @@ export default function Dashboard() {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </motion.div>
+        </motion.div >
     );
 
     return (
@@ -415,14 +416,14 @@ export default function Dashboard() {
                 <main className="flex-1 p-6 md:p-10">
                     <div className="max-w-5xl mx-auto space-y-8">
                         {/* FILTERS & SORT */}
-                        <section className="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm flex items-center justify-between">
-                            <div className="flex bg-slate-50 p-1 rounded-xl border border-slate-100">
+                        <section className="bg-white rounded-2xl p-3 sm:p-4 border border-slate-100 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <div className="flex bg-slate-50 p-1 rounded-xl border border-slate-100 w-full sm:w-auto overflow-x-auto no-scrollbar">
                                 {(['all', 'note', 'link', 'insight'] as const).map(t => (
                                     <button
                                         key={t}
                                         onClick={() => setFilter(t)}
                                         className={cn(
-                                            "px-4 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-wider transition-all",
+                                            "flex-1 sm:flex-none px-4 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-wider transition-all",
                                             filter === t ? "bg-white text-slate-900 shadow-sm border border-slate-100" : "text-slate-400 hover:text-slate-900"
                                         )}
                                     >
@@ -432,7 +433,7 @@ export default function Dashboard() {
                             </div>
                             <button
                                 onClick={() => setSortBy(sortBy === 'newest' ? 'oldest' : 'newest')}
-                                className="bg-white border border-slate-100 px-3 py-1.5 rounded-xl text-[9px] font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-all flex items-center gap-2"
+                                className="w-full sm:w-auto bg-white border border-slate-100 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-all flex items-center justify-center gap-2"
                             >
                                 Sort-by: <span className="text-slate-900">{sortBy === 'newest' ? 'Relevance' : 'Date'}</span>
                             </button>
@@ -442,7 +443,7 @@ export default function Dashboard() {
                         <section className="space-y-6">
                             <div className="flex items-center gap-2 px-2">
                                 <div className="w-2 h-2 bg-amber-500 rounded-full" />
-                                <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-900">Knowledge Feed</h3>
+                                <h3 className="text-[11px] font-black uppercase tracking-[0.2em] text-slate-900">Knowledge Feed</h3>
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -619,7 +620,7 @@ export default function Dashboard() {
                             initial={{ opacity: 0, y: 100, scale: 0.9 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 100, scale: 0.9 }}
-                            className="fixed inset-0 sm:inset-auto sm:bottom-6 sm:right-6 z-[200] w-full h-full sm:w-[400px] sm:max-w-none sm:h-[600px] sm:max-h-[80vh] md:bottom-28 md:right-8 flex flex-col bg-white sm:rounded-[40px] shadow-2xl overflow-hidden border border-slate-100"
+                            className="fixed inset-0 sm:inset-auto sm:bottom-6 sm:right-6 z-[200] w-full h-full sm:w-[400px] sm:max-w-none sm:h-[600px] sm:max-h-[80vh] md:bottom-28 md:right-8 flex flex-col bg-white sm:rounded-[32px] shadow-2xl overflow-hidden border border-slate-100"
                         >
                             <AIChat
                                 onClose={() => setIsAssistantOpen(false)}
